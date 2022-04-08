@@ -15,7 +15,7 @@ class Task:
     """
 
     max_scale_value = 10
-    min_scale_value = 0
+    min_scale_value = -10
 
     def __init__(self, owner, name, description):
         self.owner = owner
@@ -27,10 +27,12 @@ class Task:
         self._urgency = None
 
     def _validate_scale_value(self, value):
-        scale_values = range(self.min_scale_value, self.max_scale_value + 1)
-
-        if value not in scale_values:
-            raise ValueError("Scale value must be positive")
+        if value < self.min_scale_value or value > self.max_scale_value:
+            raise ValueError(
+                "Value must be between {0} and {1}".format(
+                    self.min_scale_value, self.max_scale_value
+                )
+            )
         return value
 
     @property

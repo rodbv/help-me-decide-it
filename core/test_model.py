@@ -29,7 +29,7 @@ def test_task_can_have_importance_and_urgency_assigned():
 
 def test_throws_error_if_importance_is_less_than_minimum_allowed():
     task = create_valid_task()
-    invalid_low_value = -1
+    invalid_low_value = Task.min_scale_value - 1
     with pytest.raises(ValueError):
         task.importance = invalid_low_value
 
@@ -50,6 +50,6 @@ def test_throws_error_if_urgency_is_less_than_minimum_allowed():
 
 def test_throws_error_if_urgency_is_more_than_max_allowed():
     task = create_valid_task()
-    invalid_high_value = 11
+    invalid_high_value = Task.max_scale_value + 1
     with pytest.raises(ValueError):
         task.urgency = invalid_high_value
