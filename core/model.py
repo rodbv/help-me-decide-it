@@ -1,6 +1,7 @@
 import uuid
 from dataclasses import dataclass
 from datetime import datetime
+from enum import Enum
 
 
 class Task:
@@ -58,3 +59,31 @@ class Task:
     @urgency.setter
     def urgency(self, value):
         self._urgency = self._validate_scale_value(value)
+
+    @property
+    def is_important(self):
+        return self.importance > 0
+
+    @property
+    def is_urgent(self):
+        return self.urgency > 0
+
+    @property
+    def recommended_action(self):
+        if self.is_important and self.is_urgent:
+            return Quadrants.do_now
+
+        if not self.is_important and self.is_urgent:
+            return Quadrants.delegate
+
+        if self.is_important and not self.is_urgent:
+            return Quadrants.schedule
+
+        return Quadrants.eliminate
+
+
+class Quadrants(Enum):
+    do_now = 1
+    schedule = 2
+    delegate = 3
+    eliminate = 4

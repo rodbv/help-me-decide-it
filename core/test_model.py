@@ -1,5 +1,5 @@
 import pytest
-from model import Task
+from model import Task, Quadrants
 from datetime import datetime
 
 
@@ -53,3 +53,31 @@ def test_throws_error_if_urgency_is_more_than_max_allowed():
     invalid_high_value = Task.max_scale_value + 1
     with pytest.raises(ValueError):
         task.urgency = invalid_high_value
+
+
+def test_task_with_high_importance_and_urgency_are_categorized_as_do_now():
+    task = create_valid_task()
+    task.urgency = 5
+    task.importance = 5
+    assert task.recommended_action == Quadrants.do_now
+
+
+def test_task_with_high_importance_and_low_urgency_are_categorized_as_schedule():
+    task = create_valid_task()
+    task.urgency = -5
+    task.importance = 5
+    assert task.recommended_action == Quadrants.schedule
+
+
+def test_task_with_low_importance_and_high_urgency_are_categorized_as_delegate():
+    task = create_valid_task()
+    task.urgency = 5
+    task.importance = -5
+    assert task.recommended_action == Quadrants.delegate
+
+
+def test_task_with_low_importance_and_low_urgency_are_categorized_as_delegate():
+    task = create_valid_task()
+    task.urgency = -5
+    task.importance = -5
+    assert task.recommended_action == Quadrants.eliminate
