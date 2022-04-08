@@ -3,6 +3,10 @@ from model import Task, Quadrants
 from datetime import datetime
 
 
+valid_high = 5
+valid_low = -5
+
+
 def create_valid_task():
     return Task(
         owner="valid_owner",
@@ -16,15 +20,6 @@ def test_task_is_created_with_timestamp_and_id():
 
     assert type(task.created_at) is datetime
     assert len(task.id) == 36
-
-
-def test_task_can_have_importance_and_urgency_assigned():
-    task = create_valid_task()
-    task.importance = 5
-    task.urgency = 4
-
-    assert task.importance == 5
-    assert task.urgency == 4
 
 
 def test_throws_error_if_importance_is_less_than_minimum_allowed():
@@ -57,27 +52,27 @@ def test_throws_error_if_urgency_is_more_than_max_allowed():
 
 def test_task_with_high_importance_and_urgency_are_categorized_as_do_now():
     task = create_valid_task()
-    task.urgency = 5
-    task.importance = 5
+    task.urgency = valid_high
+    task.importance = valid_high
     assert task.recommended_action == Quadrants.do_now
 
 
 def test_task_with_high_importance_and_low_urgency_are_categorized_as_schedule():
     task = create_valid_task()
-    task.urgency = -5
-    task.importance = 5
+    task.urgency = valid_low
+    task.importance = valid_high
     assert task.recommended_action == Quadrants.schedule
 
 
 def test_task_with_low_importance_and_high_urgency_are_categorized_as_delegate():
     task = create_valid_task()
-    task.urgency = 5
-    task.importance = -5
+    task.urgency = valid_high
+    task.importance = valid_low
     assert task.recommended_action == Quadrants.delegate
 
 
 def test_task_with_low_importance_and_low_urgency_are_categorized_as_eliminate():
     task = create_valid_task()
-    task.urgency = -5
-    task.importance = -5
+    task.urgency = valid_low
+    task.importance = valid_low
     assert task.recommended_action == Quadrants.eliminate
