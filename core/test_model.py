@@ -76,7 +76,7 @@ def test_task_with_low_importance_and_high_urgency_are_categorized_as_delegate()
     assert task.recommended_action == Quadrants.delegate
 
 
-def test_task_with_low_importance_and_low_urgency_are_categorized_as_delegate():
+def test_task_with_low_importance_and_low_urgency_are_categorized_as_eliminate():
     task = create_valid_task()
     task.urgency = -5
     task.importance = -5
