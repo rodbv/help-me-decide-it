@@ -4,8 +4,21 @@ from datetime import datetime
 
 
 class Task:
-    def __init__(self, user_id, name, description):
-        self.user_id = user_id
+    """A task is one item which has a name, description and is positioned in the
+    Eisenhower matrix by setting the properties urgency and importance (from 0 to 10)
+
+    Raises:
+        ValueError: when urgency or importante is not in the range from 0 to 10 (inclusive)
+
+    Returns:
+        A task
+    """
+
+    max_scale_value = 10
+    min_scale_value = 0
+
+    def __init__(self, owner, name, description):
+        self.owner = owner
         self.name = name
         self.description = description
         self._id = str(uuid.uuid4())
@@ -14,10 +27,10 @@ class Task:
         self._urgency = None
 
     def _validate_scale_value(self, value):
-        if value < 0:
+        scale_values = range(self.min_scale_value, self.max_scale_value + 1)
+
+        if value not in scale_values:
             raise ValueError("Scale value must be positive")
-        if value > 10:
-            raise ValueError("Scale value must be at most 10")
         return value
 
     @property

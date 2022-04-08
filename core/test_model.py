@@ -5,7 +5,7 @@ from datetime import datetime
 
 def create_valid_task():
     return Task(
-        user_id="valid_user_id",
+        owner="valid_owner",
         name="valid_name",
         description="valid_description",
     )
@@ -36,20 +36,20 @@ def test_throws_error_if_importance_is_less_than_minimum_allowed():
 
 def test_throws_error_if_importance_is_more_than_max_allowed():
     task = create_valid_task()
-    invalid_high_value = 1000
+    invalid_high_value = Task.max_scale_value + 1
     with pytest.raises(ValueError):
         task.importance = invalid_high_value
 
 
 def test_throws_error_if_urgency_is_less_than_minimum_allowed():
     task = create_valid_task()
-    invalid_low_value = -1
+    invalid_low_value = Task.min_scale_value - 1
     with pytest.raises(ValueError):
         task.urgency = invalid_low_value
 
 
 def test_throws_error_if_urgency_is_more_than_max_allowed():
     task = create_valid_task()
-    invalid_high_value = 1000
+    invalid_high_value = 11
     with pytest.raises(ValueError):
         task.urgency = invalid_high_value
