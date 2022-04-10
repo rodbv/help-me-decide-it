@@ -1,7 +1,7 @@
 import uuid
 from dataclasses import dataclass, field
 from datetime import datetime
-from enum import Enum, auto
+from quadrant import Quadrant
 
 
 @dataclass
@@ -27,13 +27,19 @@ class Task:
     _importance: int = field(init=False, repr=False)
 
     def _validate_scale_value(self, value):
+        """ensures that the value being passed for urgency and importance are either None or within the min and max values"""
+
+        if value is None:
+            return value
+
         if value < self.MIN_SCALE_VALUE or value > self.MAX_SCALE_VALUE:
             raise ValueError(
-                "Value must be between {0} and {1}".format(
-                    self.MIN_SCALE_VALUE, self.MAX_SCALE_VALUE
-                )
+                f"Value must be between {self.MIN_SCALE_VALUE} and {self.MAX_SCALE_VALUE}"
             )
         return value
+
+    def __repr__(self):
+        return f"Task {self.name!r}, created by by {self.owner}. Urgency: {self._urgency}, importance: {self._importance}. Recommend action: {self.recommended_action}"
 
     @property
     def importance(self):
@@ -62,19 +68,15 @@ class Task:
     @property
     def recommended_action(self):
         if self.is_important and self.is_urgent:
-            return Quadrants.do_now
+            return Quadrant.do_now
 
         if not self.is_important and self.is_urgent:
-            return Quadrants.delegate
+            return Quadrant.delegate
 
         if self.is_important and not self.is_urgent:
-            return Quadrants.schedule
+            return Quadrant.schedule
 
-        return Quadrants.eliminate
+        if not self.is_important and not self.is_urgent:
+            return Quadrant.eliminate
 
-
-class Quadrants(Enum):
-    do_now = auto()
-    schedule = auto()
-    delegate = auto()
-    eliminate = auto()
+        return None
