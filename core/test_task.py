@@ -50,37 +50,3 @@ def test_throws_error_if_urgency_is_more_than_max_allowed():
     invalid_high_value = Task.MAX_SCALE_VALUE + 1
     with pytest.raises(ValueError):
         task.urgency = invalid_high_value
-
-
-def test_task_with_high_importance_and_urgency_are_categorized_as_do_now():
-    task = create_valid_task()
-    task.urgency = valid_high
-    task.importance = valid_high
-    assert task.recommended_action == Quadrant.do_now
-
-
-def test_task_with_high_importance_and_low_urgency_are_categorized_as_schedule():
-    task = create_valid_task()
-    task.urgency = valid_low
-    task.importance = valid_high
-    assert task.recommended_action == Quadrant.schedule
-
-
-def test_task_with_low_importance_and_high_urgency_are_categorized_as_delegate():
-    task = create_valid_task()
-    task.urgency = valid_high
-    task.importance = valid_low
-    assert task.recommended_action == Quadrant.delegate
-
-
-def test_task_with_low_importance_and_low_urgency_are_categorized_as_eliminate():
-    task = create_valid_task()
-    task.urgency = valid_low
-    task.importance = valid_low
-    assert task.recommended_action == Quadrant.eliminate
-
-
-def test_task_representation_includes_urgency_importance_and_recommended_action():
-    task = create_valid_task(urgency=4, importance=3)
-    task_repr = str(task)
-    print(task_repr)

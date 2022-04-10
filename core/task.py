@@ -65,18 +65,5 @@ class Task:
     def is_urgent(self):
         return self.urgency > 0
 
-    @property
-    def recommended_action(self):
-        if self.is_important and self.is_urgent:
-            return Quadrant.do_now
-
-        if not self.is_important and self.is_urgent:
-            return Quadrant.delegate
-
-        if self.is_important and not self.is_urgent:
-            return Quadrant.schedule
-
-        if not self.is_important and not self.is_urgent:
-            return Quadrant.eliminate
-
-        return None
+    def __hash__(self):
+        return hash(id(self))
