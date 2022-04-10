@@ -2,12 +2,8 @@
 
 This application helps you decide which tasks to prioritize, based on [Eisenhower's Matrix](https://todoist.com/productivity-methods/eisenhower-matrix).
 
-<figure>
 <img src="eisenhower_matrix.jpg" alt="Eisenhower Matrix with axes Importance (vertical) and Urgency (horizontal) and tasks (post-it cards) marked A to H in them. A is the one with highest urgency and importance" width="90%" />
-<figcaption>
-<small>Fig 1. Eisenhower Matrix with axes Importance (vertical) and Urgency (horizontal) and tasks (post-it cards) marked A to H in them. A is the one with highest urgency and importance.</small>
-</figcaption>
-</figure>
+
 ## Using relative comparisons to come up with a general ranking
 
 A **Task** is one thing that we want to prioritize. In the diagram above, they would be the post-id cards.
@@ -25,10 +21,4 @@ Having the tasks placed on the quadrant, we will use a distance function to tran
 That is achieved by measuring the distance of each task to the point of maximum urgency and importance (red dot on the diagram). Note in the diagram that by measuring these distances, we
 came up with the task order of `E`, then `I`, then `F`
 
-<figure>
 <img src="prioritization.jpg" alt="Eisenhower matrix with tasks A-H (same as previous image). A ret dot in placed on the point of highest urgency and importance (top-right), and circles and arrows are used to indicate the distance between different tasks and the red dot. On the right side of the matrix, a vertical list has the same tasks A-H, sorted by distance with A on top." width="90%" />
-<figcaption><small>
-Fig 2. Eisenhower matrix with tasks A-H (same as previous image). A ret dot in placed on the point of highest urgency and importance (top-right), and circles and arrows are used to indicate the distance between different tasks and the red dot. On the right side of the matrix, a vertical list has the same tasks A-H, sorted by distance with A on top.
-</small>
-</figcaption>
-</figure>
