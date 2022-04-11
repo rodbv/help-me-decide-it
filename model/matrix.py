@@ -20,6 +20,9 @@ class Matrix:
     def tasks(self):
         return self._tasks
 
+    def get_backlog(self):
+        return sorted(self._tasks, key=lambda task: task.ranking())
+
     @staticmethod
     def get_task_quadrant(task: Task) -> Quadrant:
         if task.is_important:

@@ -52,3 +52,20 @@ def test_task_not_urgent_and_not_important_goes_to_eliminate_quadrant():
     m = matrix.Matrix()
     eliminate_task = create_valid_task(importance=LOW, urgency=LOW)
     assert m.get_task_quadrant(eliminate_task) == matrix.Quadrant.eliminate
+
+
+def test_get_matrix_as_backlog():
+    m = matrix.Matrix()
+
+    do_now_task = create_valid_task(importance=HIGH, urgency=HIGH)
+    delegate_task = create_valid_task(importance=LOW + 1, urgency=HIGH)
+    schedule_task = create_valid_task(importance=HIGH, urgency=LOW)
+    eliminate_task = create_valid_task(importance=LOW, urgency=LOW)
+    m.add_tasks(do_now_task, delegate_task, schedule_task, eliminate_task)
+
+    assert [
+        do_now_task,
+        delegate_task,
+        schedule_task,
+        eliminate_task,
+    ] == m.get_backlog()

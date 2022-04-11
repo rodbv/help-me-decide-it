@@ -38,7 +38,7 @@ class Task:
         return value
 
     def __repr__(self):
-        return f"Task {self.name!r}, created by by {self.owner}. Urgency: {self._urgency}, importance: {self._importance}. Recommend action: {self.recommended_action}"
+        return f"Task {self.name!r}, created by by {self.owner}. Urgency: {self._urgency}, importance: {self._importance}"
 
     @property
     def importance(self):
