@@ -1,5 +1,7 @@
 # Help Me Decide It!
 
+![Unit Tests](https://github.com/rodbv/help-me-decide-it/actions/workflows/run_tests.yaml/badge.svg)
+
 This application helps you decide which tasks to prioritize, based on [Eisenhower's Matrix](https://todoist.com/productivity-methods/eisenhower-matrix).
 
 <img src="eisenhower_matrix.jpg" alt="Eisenhower Matrix with axes Importance (vertical) and Urgency (horizontal) and tasks (post-it cards) marked A to H in them. A is the one with highest urgency and importance" width="90%" />
