@@ -1,5 +1,12 @@
 from model.task import Task
-from model.quadrant import Quadrant
+from enum import Enum
+
+
+class Quadrant(Enum):
+    do_now = "Do Now"
+    schedule = "Schedule"
+    delegate = "Delegate"
+    eliminate = "Eliminate"
 
 
 class Matrix:
@@ -17,5 +24,4 @@ class Matrix:
     def get_task_quadrant(task: Task) -> Quadrant:
         if task.is_important:
             return Quadrant.do_now if task.is_urgent else Quadrant.schedule
-
         return Quadrant.delegate if task.is_urgent else Quadrant.eliminate

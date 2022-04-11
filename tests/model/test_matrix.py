@@ -1,4 +1,4 @@
-from model import matrix, quadrant, task
+from model import matrix, task
 
 
 LOW = -5
@@ -6,14 +6,14 @@ HIGH = 5
 
 
 def create_valid_task(urgency=None, importance=None):
-    t = task.Task(
+    valid_task = task.Task(
         owner="valid_owner",
         name="valid_name",
         description="valid_description",
     )
-    t.importance = importance
-    t.urgency = urgency
-    return t
+    valid_task.importance = importance
+    valid_task.urgency = urgency
+    return valid_task
 
 
 def test_can_add_task_to_matrix():
@@ -33,22 +33,22 @@ def test_ignores_same_task_added_twice():
 def test_task_urgent_and_important_goes_to_do_now_quadrant():
     m = matrix.Matrix()
     do_now_task = create_valid_task(importance=HIGH + 1, urgency=HIGH)
-    assert m.get_task_quadrant(do_now_task) == quadrant.Quadrant.do_now
+    assert m.get_task_quadrant(do_now_task) == matrix.Quadrant.do_now
 
 
 def test_task_urgent_and_not_important_goes_to_delegate_quadrant():
     m = matrix.Matrix()
     delegate_task = create_valid_task(importance=LOW, urgency=HIGH)
-    assert m.get_task_quadrant(delegate_task) == quadrant.Quadrant.delegate
+    assert m.get_task_quadrant(delegate_task) == matrix.Quadrant.delegate
 
 
 def test_task_not_urgent_and_important_goes_to_schedule_quadrant():
     m = matrix.Matrix()
     schedule_task = create_valid_task(importance=HIGH, urgency=LOW)
-    assert m.get_task_quadrant(schedule_task) == quadrant.Quadrant.schedule
+    assert m.get_task_quadrant(schedule_task) == matrix.Quadrant.schedule
 
 
 def test_task_not_urgent_and_not_important_goes_to_eliminate_quadrant():
     m = matrix.Matrix()
     eliminate_task = create_valid_task(importance=LOW, urgency=LOW)
-    assert m.get_task_quadrant(eliminate_task) == quadrant.Quadrant.eliminate
+    assert m.get_task_quadrant(eliminate_task) == matrix.Quadrant.eliminate
