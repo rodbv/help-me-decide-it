@@ -1,6 +1,6 @@
-from task import Task
-from matrix import Matrix
-from quadrant import Quadrant
+from model.task import Task
+from model.matrix import Matrix
+from model.quadrant import Quadrant
 
 
 LOW = -5

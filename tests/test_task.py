@@ -1,6 +1,5 @@
 import pytest
-from task import Task
-from quadrant import Quadrant
+from model.task import Task
 from datetime import datetime
 
 
