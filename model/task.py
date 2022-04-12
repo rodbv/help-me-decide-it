@@ -1,5 +1,6 @@
 from dataclasses import dataclass, field
 from datetime import datetime
+from typing import Optional
 import math
 
 
@@ -22,8 +23,11 @@ class Task:
     name: str
     description: str
     created_at: datetime = field(init=False, default_factory=datetime.now)
-    _urgency: int = field(init=False, repr=False)
-    _importance: int = field(init=False, repr=False)
+
+    _urgency: Optional[int] = field(init=False, repr=False)
+    _importance: Optional[int] = field(init=False, repr=False)
+    urgency: Optional[int]
+    importance: Optional[int]
 
     def _validate_scale_value(self, value):
         """ensures that the value being passed for urgency and importance are either None or within the min and max values"""
@@ -41,20 +45,20 @@ class Task:
         return f"Task {self.name!r}, created by by {self.owner}. Urgency: {self._urgency}, importance: {self._importance}"
 
     @property
-    def importance(self):
-        return self._importance
-
-    @importance.setter
-    def importance(self, value):
-        self._importance = self._validate_scale_value(value)
-
-    @property
-    def urgency(self):
+    def urgency(self) -> int:
         return self._urgency
 
     @urgency.setter
-    def urgency(self, value):
-        self._urgency = self._validate_scale_value(value)
+    def urgency(self, urgency: Optional[int]):
+        self._urgency = self._validate_scale_value(urgency)
+
+    @property
+    def importance(self) -> int:
+        return self._importance
+
+    @importance.setter
+    def importance(self, importance: Optional[int]):
+        self._importance = self._validate_scale_value(importance)
 
     @property
     def is_important(self):

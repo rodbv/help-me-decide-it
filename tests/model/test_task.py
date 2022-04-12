@@ -13,9 +13,9 @@ def create_valid_task(urgency=None, importance=None):
         owner="valid_owner",
         name="valid_name",
         description="valid_description",
+        urgency=urgency,
+        importance=importance,
     )
-    t.importance = importance
-    t.urgency = urgency
     return t
 
 
