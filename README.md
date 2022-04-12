@@ -14,6 +14,8 @@ To distribute the tasks on the quadrants, we must assign two values to them: the
 
 Since it's sometimes hard to assign these values independently, we will do a system in which we compare tasks two by two. For example, given a task `A` and task `B`, we will pick which one is the most important, and the most urgent (it may be the same task, or maybe one is more important but the other is more urgent).
 
+<img width="1103" alt="comparison" src="https://user-images.githubusercontent.com/882489/163005222-609ca4c0-6633-4a2b-8840-276f49bb7ded.png">
+
 Once these comparisons are done, which task will have an overall value of importance and urgency, which will allow us to place them in the quadrants as we see on the diagram.
 
 ## Generating a task list from the priority values
