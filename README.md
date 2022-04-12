@@ -4,7 +4,7 @@
 
 This application helps you decide which tasks to prioritize, based on [Eisenhower's Matrix](https://todoist.com/productivity-methods/eisenhower-matrix).
 
-<img src="eisenhower_matrix.jpg" alt="Eisenhower Matrix with axes Importance (vertical) and Urgency (horizontal) and tasks (post-it cards) marked A to H in them. A is the one with highest urgency and importance" width="90%" />
+<img width="575" alt="einsehower-matrix" src="https://user-images.githubusercontent.com/882489/163001298-9cfd28db-375f-4864-a805-c5f0f42532d7.png">
 
 ## Using relative comparisons to come up with a general priority
 
@@ -23,4 +23,4 @@ Having the tasks placed on the quadrant, we will use a distance function to tran
 That is achieved by measuring the Euclidian distance of each task to the point of maximum urgency and importance (red dot on the diagram). Note in the diagram that by measuring these distances, we
 came up with the task order of `E`, then `I`, then `F`
 
-<img src="prioritization.jpg" alt="Eisenhower matrix with tasks A-H (same as previous image). A ret dot in placed on the point of highest urgency and importance (top-right), and circles and arrows are used to indicate the distance between different tasks and the red dot. On the right side of the matrix, a vertical list has the same tasks A-H, sorted by distance with A on top." width="90%" />
+<img width="853" alt="prioritization" src="https://user-images.githubusercontent.com/882489/163001286-500f6ab2-ee4d-426c-a47e-e1e1de236714.png">
