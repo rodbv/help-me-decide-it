@@ -64,13 +64,13 @@ class Task:
     def is_urgent(self):
         return self.urgency > 0
 
-    def ranking(self):
+    def priority(self):
         """
-        The ranking of the task is the point distance between the urgency and importante of the task
+        The priority of the task is the point distance between the urgency and importante of the task
         in relation to the point of maximum importance and urgency in the scale, which is 10.
 
         For example if a task has urgency 2 and importance 3, that would be calculated as:
-        ranking = math.sqrt((MAX_URGENCY-task.urgency)**2 + (MAX_IMPORTANCE-task.importance)**2) which is
+        priority = math.sqrt((MAX_URGENCY-task.urgency)**2 + (MAX_IMPORTANCE-task.importance)**2) which is
         math.sqrt(8**2 + 7**2) which is math.sqrt(64+49), or approximately 10.63
         """
         dist_importance = self.MAX_SCALE_VALUE - self.importance

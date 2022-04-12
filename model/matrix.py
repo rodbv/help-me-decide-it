@@ -21,7 +21,7 @@ class Matrix:
         return self._tasks
 
     def get_backlog(self):
-        return sorted(self._tasks, key=lambda task: task.ranking())
+        return sorted(self._tasks, key=lambda task: task.priority())
 
     @staticmethod
     def get_task_quadrant(task: Task) -> Quadrant:
