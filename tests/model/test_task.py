@@ -5,7 +5,7 @@ import math
 
 VALID_HIGH = task.Task.MAX_SCALE_VALUE
 VALID_LOW = task.Task.MIN_SCALE_VALUE
-RANKING_TEST_DELTA = 0.001
+PRIORITY_TEST_DELTA = 0.001
 
 
 def create_valid_task(urgency=None, importance=None):
@@ -25,16 +25,16 @@ class TestTask:
         assert type(t.created_at) is datetime
 
 
-class TestRanking:
-    def test_task_with_importance_2_and_urgency_3_has_ranking_10_63(self):
+class TestPriority:
+    def test_task_with_importance_2_and_urgency_3_has_priority_10_63(self):
         t = create_valid_task(urgency=3, importance=2)
         expected = math.sqrt(8**2 + 7**2)
-        assert expected == pytest.approx(t.ranking(), RANKING_TEST_DELTA)
+        assert expected == pytest.approx(t.priority(), PRIORITY_TEST_DELTA)
 
-    def test_task_with_importance_minus2_and_urgency_minus3_has_ranking_17_69(self):
+    def test_task_with_importance_minus2_and_urgency_minus3_has_priority_17_69(self):
         t = create_valid_task(urgency=-3, importance=-2)
         expected = math.sqrt(13**2 + 12**2)
-        assert expected == pytest.approx(t.ranking(), RANKING_TEST_DELTA)
+        assert expected == pytest.approx(t.priority(), PRIORITY_TEST_DELTA)
 
 
 class TestTaskValidation:
