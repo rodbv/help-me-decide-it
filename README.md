@@ -26,3 +26,5 @@ That is achieved by measuring the Euclidian distance of each task to the point o
 came up with the task order of `E`, then `I`, then `F`
 
 <img width="853" alt="prioritization" src="https://user-images.githubusercontent.com/882489/163001286-500f6ab2-ee4d-426c-a47e-e1e1de236714.png">
+
+I'm learning to use PRs and issues correctly.
