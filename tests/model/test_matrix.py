@@ -10,9 +10,9 @@ def create_valid_task(urgency=None, importance=None):
         owner="valid_owner",
         name="valid_name",
         description="valid_description",
+        urgency=urgency,
+        importance=importance,
     )
-    valid_task.importance = importance
-    valid_task.urgency = urgency
     return valid_task
 
 
