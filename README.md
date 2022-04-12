@@ -23,6 +23,6 @@ Once these comparisons are done, which task will have an overall value of import
 Having the tasks placed on the quadrant, we will use a distance function to transform a 2D diagram into a sorted list of tasks, which can be assigned to a backlog etc.
 
 That is achieved by measuring the Euclidian distance of each task to the point of maximum urgency and importance (red dot on the diagram). Note in the diagram that by measuring these distances, we
-came up with the task order of `E`, then `I`, then `F`
+came up with the task order of `E`, `F`, `D` and `G`, although there were in different quadrants.
 
 <img width="853" alt="prioritization" src="https://user-images.githubusercontent.com/882489/163001286-500f6ab2-ee4d-426c-a47e-e1e1de236714.png">
